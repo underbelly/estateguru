@@ -69,6 +69,14 @@ Before you begin, ensure you have the following installed:
    - **Disable remote scripts** to prevent conflicts with local development
    - **Enable local scripts** to allow local file overrides
    - This allows your local CSS and JS files to override the remote ones during development
+   
+   ⚠️ **Important**: Do **NOT** enable both remote and local development toggles simultaneously. Enabling both will cause the `.js` and `.css` files to be loaded twice, which can lead to:
+   - Duplicate script execution
+   - CSS conflicts and styling issues
+   - Performance degradation
+   - Unexpected behavior
+   
+   Always use **either** remote **or** local, never both at the same time.
 
 This setup provides:
 - Real-time SCSS compilation
