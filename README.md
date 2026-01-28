@@ -1,15 +1,15 @@
-# Applause
+# EstateGuru
 
-A modern web application built with vanilla JavaScript, featuring modular architecture, smooth animations, and responsive design.
+A build system specifically designed for Webflow projects. This repository compiles SCSS to CSS and bundles JavaScript modules, generating the files needed to enhance Webflow sites with custom functionality. The generated `dist/app.bundle.js` and CSS files are intended to be used within Webflow projects via the Local Code toggle feature.
 
 ## 🚀 Features
 
-- **Modular JavaScript Architecture**: Self-initializing classes with clean separation of concerns
-- **Modern Build System**: ESBuild for fast bundling and development
-- **SCSS Styling**: Organized stylesheets with variables and mixins
-- **Smooth Animations**: GSAP integration for high-performance animations
-- **Responsive Design**: Mobile-first approach with flexible layouts
-- **Component-Based**: Reusable components like VideoBlock, Swiper, Cards, FAQ, and more
+- **Webflow-Focused Build System**: Generates JavaScript and CSS files specifically for use in Webflow projects
+- **JavaScript Bundling**: ESBuild bundles JavaScript modules into `dist/app.bundle.js` for Webflow integration
+- **SCSS Compilation**: Sass compiler generates CSS files from SCSS source files for Webflow styling
+- **Webflow Local Code Integration**: Designed to work seamlessly with Webflow's Local Code toggle for live development
+- **Modular Architecture**: Self-initializing classes that work within Webflow's DOM structure
+- **Component-Based**: Reusable Webflow components like VideoBox, VideoCarousel, VideoFAQ, and more
 
 ## 📋 Prerequisites
 
@@ -24,8 +24,8 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd applause
+   git clone https://github.com/underbelly/estateguru.git
+   cd estateguru-js
    ```
 
 2. **Install dependencies**
@@ -59,7 +59,7 @@ Before you begin, ensure you have the following installed:
 
 3. **For live CSS changes**, add this CSS injection code in the Stylus Chrome extension:
    ```css
-   @-moz-document url-prefix("https://applause") {
+   @-moz-document url-prefix("https://your-webflow-site") {
    @import url("http://127.0.0.1:5500/css/style.css");
    }
    ```
@@ -130,29 +130,28 @@ npm run build
 ## 📁 Project Structure
 
 ```
-applause/
+estateguru-js/
 ├── css/                    # Compiled CSS files
-│   ├── style.css
-│   ├── forms.css
-│   └── variables.css
+│   └── style.css
 ├── scss/                   # Source SCSS files
 │   ├── style.scss
 │   ├── forms.scss
-│   └── variables.scss
+│   ├── variables.scss
+│   ├── accordion-tabs.scss
+│   └── underbelly-helpers.scss
 ├── js/                     # JavaScript source files
 │   ├── app.js             # Main entry point
+│   ├── annotations.js     # Annotation utilities
 │   ├── classes/           # Modular class files
-│   │   ├── Animations.js
-│   │   ├── Card.js
-│   │   ├── FAQ.js
-│   │   ├── HeaderScroll.js
-│   │   ├── Swiper.js
-│   │   └── VideoBlock.js
+│   │   ├── VideoBox.js
+│   │   ├── VideoCarousel.js
+│   │   └── VideoFAQ.js
 │   └── modules/
 │       └── ClassManager.js
 ├── dist/                   # Built JavaScript bundle
 │   └── app.bundle.js
 ├── index.html             # Main HTML file
+├── webflow-loader.js      # Webflow integration loader
 └── package.json           # Dependencies and scripts
 ```
 
@@ -186,7 +185,7 @@ This project uses a centralized ClassManager approach for component initializati
    import MyComponent from '../classes/MyComponent.js';
 
    // Add to the global classes object
-   window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations, MyComponent };
+   window.AppClasses = { VideoBox, VideoCarousel, VideoFAQ, MyComponent };
 
    // Add initialization in the initializeClasses function
    document.querySelectorAll(MyComponent.selector).forEach((element, index) => {
@@ -196,12 +195,9 @@ This project uses a centralized ClassManager approach for component initializati
 
 ### Available Components
 
-- **VideoBlock**: Video player component (`.carousel-video`)
-- **Swiper**: Touch-enabled slider (`.swiper`)
-- **Cards**: Interactive card component (`.card`)
-- **FAQ**: Accordion-style FAQ component (`.faq`)
-- **HeaderScroll**: Header scroll behavior (`[data-header-scroll]`)
-- **Animations**: Animation triggers (`[data-animation]`)
+- **VideoBox**: Video player component (`#video-box`)
+- **VideoCarousel**: Video carousel component (`.video-carousel`)
+- **VideoFAQ**: Video FAQ accordion component (`.video-faq`)
 
 ## 🎨 Styling
 
