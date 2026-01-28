@@ -50,6 +50,12 @@ webflow-export/
 *.sass.map
 *.scss.map
 
+# Compiled CSS files (only style.css is needed, others are imported via @use)
+css/accordion-tabs.css
+css/forms.css
+css/underbelly-helpers.css
+css/variables.css
+
 # Testing
 coverage/
 

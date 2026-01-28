@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass scss:css --watch",
+    "sass": "sass scss/style.scss css/style.css --watch",
     "build": "esbuild js/app.js --bundle --outfile=dist/app.bundle.js --format=iife --global-name=AppModule --minify --platform=browser",
     "build-esm": "esbuild js/app.js --bundle --outfile=dist/app.bundle.js --format=esm --minify --platform=browser",
     "dev": "esbuild js/app.js --bundle --outfile=dist/app.bundle.js --format=iife --global-name=AppModule --watch --platform=browser",
