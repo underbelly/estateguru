@@ -448,8 +448,8 @@ body:not(.wf-control) {
 
         .video-lightbox-circle, .video-lightbox-icon, .video-lightbox-thumbnail {
             opacity: 1;
-            visibility: visible;
-            transition: opacity 1s $bezier;
+            visibility: visible; 
+            transition: all 1s $bezier;
         }
     
         &.active {

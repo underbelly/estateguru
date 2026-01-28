@@ -735,7 +735,7 @@ body:not(.wf-control) .video-lightbox-link .video-lightbox-wrap {
 body:not(.wf-control) .video-lightbox-link .video-lightbox-circle, body:not(.wf-control) .video-lightbox-link .video-lightbox-icon, body:not(.wf-control) .video-lightbox-link .video-lightbox-thumbnail {
   opacity: 1;
   visibility: visible;
-  transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 body:not(.wf-control) .video-lightbox-link.active {
   height: auto;
