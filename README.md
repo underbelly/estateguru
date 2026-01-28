@@ -85,7 +85,9 @@ This setup provides:
 - Local file overrides for development testing
 
 **Note**: To see changes:
-- **CSS changes**: Enable/disable Stylus extension to reload styles
+- **CSS changes**: 
+  - In Webflow editor: Click the preview button on and off to reload CSS styles
+  - With Stylus extension: Enable/disable Stylus extension to reload styles
 - **JavaScript changes**: Refresh the page to reload scripts
 
 #### Option 2: Traditional Development
@@ -103,7 +105,9 @@ This command will:
 - Bundle and watch JavaScript files
 
 **Note**: To see changes:
-- **CSS changes**: Enable/disable Stylus extension to reload styles
+- **CSS changes**: 
+  - In Webflow editor: Click the preview button on and off to reload CSS styles
+  - With Stylus extension: Enable/disable Stylus extension to reload styles
 - **JavaScript changes**: Refresh the page to reload scripts
 
 ### Individual Commands
