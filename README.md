@@ -251,6 +251,13 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
    - `dist/app.bundle.js`
    - Any additional assets
 
+3. **Configure Webflow for Production**:
+   - ⚠️ **Important**: Before pushing live, ensure that in your Webflow CSS/JS component settings:
+     - **Enable remote scripts** (production files)
+     - **Disable local scripts** (development mode)
+   - This ensures your live site loads the production files from your server, not from your local development environment
+   - Never enable both toggles simultaneously in production
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
