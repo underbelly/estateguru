@@ -1,4 +1,4 @@
-# Applause
+# EstateGuru
 
 A modern web application built with vanilla JavaScript, featuring modular architecture, smooth animations, and responsive design.
 
@@ -9,7 +9,7 @@ A modern web application built with vanilla JavaScript, featuring modular archit
 - **SCSS Styling**: Organized stylesheets with variables and mixins
 - **Smooth Animations**: GSAP integration for high-performance animations
 - **Responsive Design**: Mobile-first approach with flexible layouts
-- **Component-Based**: Reusable components like VideoBlock, Swiper, Cards, FAQ, and more
+- **Component-Based**: Reusable components like VideoBox, VideoCarousel, VideoFAQ, and more
 
 ## 📋 Prerequisites
 
@@ -18,14 +18,13 @@ Before you begin, ensure you have the following installed:
 - **Node.js** (version 16 or higher)
 - **npm** or **yarn** package manager
 - **Live Server** (VS Code/Cursor extension) for local development with live reload
-- **Stylus** (Chrome browser extension) for CSS injection
 
 ## 🛠️ Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd applause
+   git clone https://github.com/underbelly/estateguru.git
+   cd estateguru-js
    ```
 
 2. **Install dependencies**
@@ -37,13 +36,14 @@ Before you begin, ensure you have the following installed:
 
 3. **Install development tools**:
    - **VS Code/Cursor extensions**: Live Server for local development with live reload
-   - **Chrome extension**: Stylus for CSS injection and management
 
 ## 🏃‍♂️ Getting Started
 
-### Development Mode
+### Development Mode with Webflow Integration
 
-#### Option 1: Using Live Server (Recommended for Local Development)
+#### Using Go Live with Webflow Local Code Toggle
+
+This setup allows you to develop locally while viewing your changes on the actual Webflow site:
 
 1. **Start the build process**:
    ```bash
@@ -51,38 +51,54 @@ Before you begin, ensure you have the following installed:
    # or
    npm run dev:all
    ```
+   This will:
+   - Watch and compile SCSS files to CSS
+   - Bundle and watch JavaScript files
 
-2. **Start Live Server**:
+2. **Start Live Server (Go Live)**:
    - Click the "Go Live" button on the bottom status bar in VS Code/Cursor
    - Or right-click on `index.html` and select "Open with Live Server"
-   - This will start a local server (usually at `http://127.0.0.1:5500`)
+   - This will start a local server (usually at `http://127.0.0.1:5500` or `http://localhost:5500`)
+   - **Note the port number** - you'll need this for the Webflow configuration
 
-3. **For live CSS changes**, add this CSS injection code in the Stylus Chrome extension:
-   ```css
-   @-moz-document url-prefix("https://applause") {
-   @import url("http://127.0.0.1:5500/css/style.css");
-   }
-   ```
+3. **Configure Webflow Header Component**:
+   - In your Webflow project, locate the **CSS/JS Header Component** (or custom code component)
+   - Find the **"Local Code"** toggle/switch in the component settings
+   - **Enable the Local Code toggle**
+   - When enabled, this tells Webflow to load CSS and JavaScript files from your local development server instead of the remote files
+   - The component will automatically detect your local server running on the port (e.g., `http://localhost:5500`)
 
-4. **Configure Webflow CSS/JS Component**:
-   - In your Webflow project, go to the CSS/JS component settings
-   - **Disable remote scripts** to prevent conflicts with local development
-   - **Enable local scripts** to allow local file overrides
-   - This allows your local CSS and JS files to override the remote ones during development
+4. **How it works**:
+   - When the **Local Code toggle is enabled** in Webflow, the header component will:
+     - Load CSS from: `http://localhost:[PORT]/css/style.css`
+     - Load JavaScript from: `http://localhost:[PORT]/dist/app.bundle.js`
+   - This allows you to see your local changes in real-time on the Webflow site
+   - Changes to SCSS files will automatically compile and be reflected when you refresh
+   - Changes to JavaScript files will automatically bundle and be reflected when you refresh
 
-This setup provides:
-- Real-time SCSS compilation
-- JavaScript bundling with watch mode
-- Live CSS injection for real-time styling updates
-- Local file overrides for development testing
+5. **Development workflow**:
+   - Keep `npm start` running in your terminal
+   - Keep Go Live active (the port should be visible in the status bar)
+   - Enable the Local Code toggle in Webflow
+   - Make changes to your SCSS or JavaScript files
+   - Refresh the Webflow page to see your changes
 
-**Note**: To see changes:
-- **CSS changes**: Enable/disable Stylus extension to reload styles
-- **JavaScript changes**: Refresh the page to reload scripts
+**Benefits of this approach**:
+- ✅ See changes directly on the Webflow site
+- ✅ No need for CSS injection extensions
+- ✅ Test with actual Webflow interactions and components
+- ✅ Real-time development feedback
+- ✅ Works with Webflow's responsive design mode
 
-#### Option 2: Traditional Development
+**Note**: 
+- Make sure your local server port matches what Webflow expects (check the port in the Go Live status bar)
+- If you change ports, you may need to update the Webflow component configuration
+- JavaScript changes require a page refresh to see updates
+- SCSS changes compile automatically but may require a refresh to see updates
 
-Start the development server for both JavaScript and SCSS:
+### Traditional Development (Without Webflow)
+
+If you're developing standalone without Webflow integration:
 
 ```bash
 npm start
@@ -95,7 +111,7 @@ This command will:
 - Bundle and watch JavaScript files
 
 **Note**: To see changes:
-- **CSS changes**: Enable/disable Stylus extension to reload styles
+- **CSS changes**: Refresh the page to reload styles
 - **JavaScript changes**: Refresh the page to reload scripts
 
 ### Individual Commands
@@ -118,29 +134,32 @@ npm run build
 ## 📁 Project Structure
 
 ```
-applause/
+estateguru-js/
 ├── css/                    # Compiled CSS files
 │   ├── style.css
 │   ├── forms.css
-│   └── variables.css
+│   ├── variables.css
+│   ├── accordion-tabs.css
+│   └── underbelly-helpers.css
 ├── scss/                   # Source SCSS files
 │   ├── style.scss
 │   ├── forms.scss
-│   └── variables.scss
+│   ├── variables.scss
+│   ├── accordion-tabs.scss
+│   └── underbelly-helpers.scss
 ├── js/                     # JavaScript source files
 │   ├── app.js             # Main entry point
+│   ├── annotations.js     # Annotation utilities
 │   ├── classes/           # Modular class files
-│   │   ├── Animations.js
-│   │   ├── Card.js
-│   │   ├── FAQ.js
-│   │   ├── HeaderScroll.js
-│   │   ├── Swiper.js
-│   │   └── VideoBlock.js
+│   │   ├── VideoBox.js
+│   │   ├── VideoCarousel.js
+│   │   └── VideoFAQ.js
 │   └── modules/
 │       └── ClassManager.js
 ├── dist/                   # Built JavaScript bundle
 │   └── app.bundle.js
 ├── index.html             # Main HTML file
+├── webflow-loader.js      # Webflow integration loader
 └── package.json           # Dependencies and scripts
 ```
 
@@ -174,7 +193,7 @@ This project uses a centralized ClassManager approach for component initializati
    import MyComponent from '../classes/MyComponent.js';
 
    // Add to the global classes object
-   window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations, MyComponent };
+   window.AppClasses = { VideoBox, VideoCarousel, VideoFAQ, MyComponent };
 
    // Add initialization in the initializeClasses function
    document.querySelectorAll(MyComponent.selector).forEach((element, index) => {
@@ -184,12 +203,9 @@ This project uses a centralized ClassManager approach for component initializati
 
 ### Available Components
 
-- **VideoBlock**: Video player component (`.carousel-video`)
-- **Swiper**: Touch-enabled slider (`.swiper`)
-- **Cards**: Interactive card component (`.card`)
-- **FAQ**: Accordion-style FAQ component (`.faq`)
-- **HeaderScroll**: Header scroll behavior (`[data-header-scroll]`)
-- **Animations**: Animation triggers (`[data-animation]`)
+- **VideoBox**: Video player component (`#video-box`)
+- **VideoCarousel**: Video carousel component (`.video-carousel`)
+- **VideoFAQ**: Video FAQ accordion component (`.video-faq`)
 
 ## 🎨 Styling
 
@@ -198,6 +214,7 @@ The project uses SCSS with a modular approach:
 - **Variables**: Global variables in `scss/variables.scss`
 - **Forms**: Form-specific styles in `scss/forms.scss`
 - **Accordion Tabs**: Tab component styles in `scss/accordion-tabs.scss`
+- **Underbelly Helpers**: Utility styles in `scss/underbelly-helpers.scss`
 - **Main Styles**: Core styles in `scss/style.scss`
 
 ### SCSS Compilation
@@ -238,8 +255,7 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
    ```
 
 2. **Upload files** to your web server:
-   - `index.html`
-   - `css/` directory
+   - `css/` directory (all compiled CSS files)
    - `dist/app.bundle.js`
    - Any additional assets
 
@@ -250,18 +266,21 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 1. **SCSS not compiling**: Ensure you're running `npm run sass` or `npm start`
 2. **JavaScript not updating**: Check that the build process is running with `npm run dev`
 3. **Live Server not working**: Make sure the Live Server extension is installed and the "Go Live" button is active
+4. **Local code not loading in Webflow**: 
+   - Verify Go Live is running and note the port number
+   - Check that the Local Code toggle is enabled in the Webflow header component
+   - Ensure the port in Webflow matches your Live Server port
+   - Check browser console for any CORS or loading errors
 
 ### Development Tips
 
 - Use browser developer tools to debug JavaScript modules
-- Access registered modules via `window.modules` in the console
+- Access registered classes via `window.AppClasses` in the console
 - Check the console for any build errors
-- Ensure all file paths are correct in your HTML
-- **Live Server URL**: Make sure your Live Server is running on `http://127.0.0.1:5500` for the local development setup
-- **CSS Injection**: The `@-moz-document` rule in Stylus allows you to inject local CSS for styling updates
-- **Stylus Extension**: Use the Stylus Chrome extension to inject CSS rules - enable/disable to reload styles
-- **Manual Refresh**: Refresh the page to see JavaScript changes after they're compiled
-- **Webflow Settings**: Configure the CSS/JS component to disable remote scripts and enable local scripts for development overrides
+- Ensure all file paths are correct
+- **Port Configuration**: Make sure your Live Server port matches the Webflow component configuration
+- **Local Code Toggle**: Remember to enable/disable the toggle in Webflow when switching between local and remote development
+- **Refresh Strategy**: JavaScript changes require a page refresh; SCSS changes compile automatically but may need a refresh
 
 ## 📝 Scripts Reference
 
