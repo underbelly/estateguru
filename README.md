@@ -126,13 +126,52 @@ npm run dev
 ```bash
 npm run build
 ```
+Creates optimized production builds in the `staging/` folder
+
+### Staging & Production Workflow
+
+This project uses a staging/production folder structure for safe deployment:
+
+- **`staging/`** - Contains files for testing and client approval
+- **`production/`** - Contains files currently live on the site
+
+**Workflow:**
+
+1. **Make changes and build to staging**:
+   ```bash
+   npm run build
+   ```
+   This compiles SCSS and bundles JS into `staging/style.css` and `staging/app.bundle.js`
+
+2. **Test in Webflow staging/preview**:
+   - Configure Webflow to load files from `staging/` folder
+   - Test your changes and get client approval
+
+3. **Promote staging to production**:
+   ```bash
+   npm run promote
+   ```
+   This copies `staging/` files to `production/` folder
+
+4. **Commit and push**:
+   ```bash
+   git add production/
+   git commit -m "Promote staging to production"
+   git push origin main
+   ```
+
+**Important**: Always test in staging before promoting to production!
 
 ## 📁 Project Structure
 
 ```
 estateguru-js/
-├── css/                    # Compiled CSS files
-│   └── style.css
+├── staging/                # Staging files (for testing)
+│   ├── style.css
+│   └── app.bundle.js
+├── production/             # Production files (currently live)
+│   ├── style.css
+│   └── app.bundle.js
 ├── scss/                   # Source SCSS files
 │   ├── style.scss
 │   ├── forms.scss
@@ -246,10 +285,10 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
    ```
 
 2. **Upload files** to your web server:
-   - `index.html`
-   - `css/` directory
-   - `dist/app.bundle.js`
-   - Any additional assets
+   - Upload the `production/` folder contents:
+     - `production/style.css`
+     - `production/app.bundle.js`
+   - Or configure your server to serve from the `production/` folder
 
 3. **Configure Webflow for Production**:
    - ⚠️ **Important**: Before pushing live, ensure that in your Webflow CSS/JS component settings:
@@ -282,11 +321,12 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start development server with SCSS and JS watchers |
+| `npm start` | Start development server with SCSS and JS watchers (builds to staging) |
 | `npm run dev:all` | Same as start - runs both SCSS and JS watchers |
-| `npm run sass` | Compile SCSS to CSS with watch mode |
-| `npm run dev` | Bundle JavaScript with watch mode |
-| `npm run build` | Create production build |
+| `npm run sass` | Compile SCSS to CSS with watch mode (outputs to staging/) |
+| `npm run dev` | Bundle JavaScript with watch mode (outputs to staging/) |
+| `npm run build` | Create optimized production build (outputs to staging/) |
+| `npm run promote` | Copy staging files to production folder |
 | `npm run build-esm` | Create ES module build |
 
 ## 🤝 Contributing

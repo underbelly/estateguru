@@ -6,12 +6,14 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass scss/style.scss css/style.css --watch",
-    "build": "esbuild js/app.js --bundle --outfile=dist/app.bundle.js --format=iife --global-name=AppModule --minify --platform=browser",
-    "build-esm": "esbuild js/app.js --bundle --outfile=dist/app.bundle.js --format=esm --minify --platform=browser",
-    "dev": "esbuild js/app.js --bundle --outfile=dist/app.bundle.js --format=iife --global-name=AppModule --watch --platform=browser",
+    "sass": "sass scss/style.scss staging/style.css --watch",
+    "sass:build": "sass scss/style.scss staging/style.css",
+    "dev": "esbuild js/app.js --bundle --outfile=staging/app.bundle.js --format=iife --global-name=AppModule --watch --platform=browser",
+    "build": "npm run sass:build && esbuild js/app.js --bundle --outfile=staging/app.bundle.js --format=iife --global-name=AppModule --minify --platform=browser",
+    "build-esm": "esbuild js/app.js --bundle --outfile=staging/app.bundle.js --format=esm --minify --platform=browser",
     "dev:all": "concurrently \"npm run sass\" \"npm run dev\"",
-    "start": "npm run dev:all"
+    "start": "npm run dev:all",
+    "promote": "node scripts/promote.js"
   },
   "keywords": [],
   "author": "",
