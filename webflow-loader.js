@@ -30,7 +30,7 @@ console.log('  - isStaging:', isStaging);
 console.log('  - hostname:', window.location.hostname);
 console.log('  - Would use production if not staging:', !isStaging);
 
-// Function to enable/disable CSS links based on environment
+// Function to remove unused CSS links based on environment
 function toggleCSSLinks() {
   const productionLink = document.getElementById('estateguru-css') || 
                          document.querySelector('link[href*="production/style.css"]');
@@ -38,24 +38,22 @@ function toggleCSSLinks() {
                       document.querySelector('link[href*="staging/style.css"]');
   
   if (isStaging) {
-    // Staging mode: disable production, enable staging
+    // Staging mode: remove production CSS link
     if (productionLink) {
-      productionLink.disabled = true;
-      console.log('🔵 Disabled production CSS');
+      productionLink.remove();
+      console.log('🔵 Removed production CSS');
     }
     if (stagingLink) {
-      stagingLink.disabled = false;
-      console.log('🔵 Enabled staging CSS');
+      console.log('🔵 Using staging CSS');
     }
   } else {
-    // Production mode: disable staging, enable production
+    // Production mode: remove staging CSS link
     if (stagingLink) {
-      stagingLink.disabled = true;
-      console.log('🟢 Disabled staging CSS');
+      stagingLink.remove();
+      console.log('🟢 Removed staging CSS');
     }
     if (productionLink) {
-      productionLink.disabled = false;
-      console.log('🟢 Enabled production CSS');
+      console.log('🟢 Using production CSS');
     }
   }
 }
