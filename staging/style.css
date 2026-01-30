@@ -1220,7 +1220,11 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: rgb(55, 181, 192);
+  background-color: rgb(117, 255, 133);
+}
+
+.hsfc-NavigationRow__Alerts {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
