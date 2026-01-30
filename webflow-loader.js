@@ -30,34 +30,42 @@ console.log('  - isStaging:', isStaging);
 console.log('  - hostname:', window.location.hostname);
 console.log('  - Would use production if not staging:', !isStaging);
 
-if (isStaging) {
-  // Function to replace CSS link
-  function replaceCSS() {
-    // Find the production CSS link (by ID or href)
-    const cssLink = document.getElementById('estateguru-css') || 
-                    document.querySelector('link[href*="production/style.css"]');
-    
-    if (cssLink) {
-      // Replace with staging CSS
-      cssLink.href = cssUrl;
-    } else {
-      // Fallback: create link if production link doesn't exist yet
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = cssUrl;
-      link.id = 'estateguru-css';
-      document.head.appendChild(link);
+// Function to enable/disable CSS links based on environment
+function toggleCSSLinks() {
+  const productionLink = document.getElementById('estateguru-css') || 
+                         document.querySelector('link[href*="production/style.css"]');
+  const stagingLink = document.getElementById('estateguru-css-staging') || 
+                      document.querySelector('link[href*="staging/style.css"]');
+  
+  if (isStaging) {
+    // Staging mode: disable production, enable staging
+    if (productionLink) {
+      productionLink.disabled = true;
+      console.log('🔵 Disabled production CSS');
+    }
+    if (stagingLink) {
+      stagingLink.disabled = false;
+      console.log('🔵 Enabled staging CSS');
+    }
+  } else {
+    // Production mode: disable staging, enable production
+    if (stagingLink) {
+      stagingLink.disabled = true;
+      console.log('🟢 Disabled staging CSS');
+    }
+    if (productionLink) {
+      productionLink.disabled = false;
+      console.log('🟢 Enabled production CSS');
     }
   }
-  
-  // Run immediately if DOM is ready, otherwise wait
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', replaceCSS);
-  } else {
-    replaceCSS();
-  }
 }
-// If production, do nothing - CSS loads normally from HTML <link> tag
+
+// Run immediately if DOM is ready, otherwise wait
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', toggleCSSLinks);
+} else {
+  toggleCSSLinks();
+}
 
 // Load JavaScript
 const script = document.createElement('script');
