@@ -1,38 +1,36 @@
 // Detect environment
-const codeToggle = document.getElementById('code-toggle');
-const isLocalDev = codeToggle && codeToggle.offsetParent !== null;
 const isStaging = window.location.hostname.includes('webflow.io') || 
                   window.location.hostname.includes('.webflow.');
 
 // Base URLs
 const githubBase = 'https://underbelly.github.io/estateguru';
-const localBase = 'http://127.0.0.1:5500';
 
 // Determine URLs based on environment
 let cssUrl, scriptUrl;
 
-if (isLocalDev) {
-  // Local development
-  cssUrl = `${localBase}/staging/style.css`;
-  scriptUrl = `${localBase}/staging/app.bundle.js`;
-} else if (isStaging) {
+if (isStaging) {
   // Webflow staging/preview - use staging files
   cssUrl = `${githubBase}/staging/style.css`;
   scriptUrl = `${githubBase}/staging/app.bundle.js`;
+  console.log('🔵 Staging mode detected');
+  console.log('CSS:', cssUrl);
+  console.log('JS:', scriptUrl);
 } else {
   // Production - use production files
   cssUrl = `${githubBase}/production/style.css`;
   scriptUrl = `${githubBase}/production/app.bundle.js`;
+  console.log('🟢 Production mode');
+  console.log('CSS:', cssUrl);
+  console.log('JS:', scriptUrl);
 }
 
-// Handle CSS: Production loads normally via <link> tag in HTML
-// In Webflow, add this in the <head>: 
-// <link rel="stylesheet" href="https://underbelly.github.io/estateguru/production/style.css" id="estateguru-css">
-//
-// This script will replace it with staging CSS if in staging/preview mode
-// If in production, the HTML link tag loads normally (no JS needed)
+// Log what would happen if not in staging (for testing)
+console.log('📊 Environment check:');
+console.log('  - isStaging:', isStaging);
+console.log('  - hostname:', window.location.hostname);
+console.log('  - Would use production if not staging:', !isStaging);
 
-if (isStaging || isLocalDev) {
+if (isStaging) {
   // Function to replace CSS link
   function replaceCSS() {
     // Find the production CSS link (by ID or href)

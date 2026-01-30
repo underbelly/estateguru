@@ -1219,4 +1219,8 @@ p a:hover:before {
   transform: scaleX(1);
 }
 
+.staging-test {
+  background-color: red;
+}
+
 /*# sourceMappingURL=style.css.map */
