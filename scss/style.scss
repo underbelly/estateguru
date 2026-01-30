@@ -1040,3 +1040,18 @@ p a {
 }
 // Footer-newsletter-error-changes
 .hsfc-NavigationRow__Alerts{display:none;}
+.story-form .button.is-dark:hover {
+    background-image: linear-gradient(90deg, #96D9F5 0%, #3D9DFF 100%) !important;
+}
+.story-form .button.is-dark:hover,
+.hero-newsletter-button:hover{
+    background-image: linear-gradient(90deg, #96D9F5 0%, #3D9DFF 100%) !important;
+}
+
+.footer .text-block-2, .footer .sitemap-header{font-weight:500;}
+.sitemap-col.double-col .footer-logo{
+    width: auto;
+}
+.sitemap-col.double-col .footer-logo h6.sitemap-header {
+    color: #fff;
+}
