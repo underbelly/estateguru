@@ -1248,7 +1248,8 @@ p a:hover:before {
 }
 
 .hero-newsletter-button,
-.hs-form-html .hsfc-Button {
+.hs-form-html .hsfc-Button,
+.story-form .button.is-dark {
   background-image: linear-gradient(90deg, #2C2B32, #000000, #3D9DFF, #96D9F5) !important;
   background-size: 300% 100%;
   background-position: 0% 50%;
