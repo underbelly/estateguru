@@ -1220,7 +1220,7 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: yellow;
+  background-color: yellowgreen;
 }
 
 .hsfc-NavigationRow__Alerts {
@@ -1246,6 +1246,10 @@ p a:hover:before {
 
 .sitemap-col.double-col .footer-logo h6.sitemap-header {
   color: #fff;
+}
+
+.hs-form-html .hsfc-Button {
+  transform: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */

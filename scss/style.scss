@@ -1036,7 +1036,7 @@ p a {
 
 // Staging Tests
 .staging-test {
-    background-color: yellow;
+    background-color: yellowgreen;
 }
 // Footer-newsletter-error-changes
 .hsfc-NavigationRow__Alerts{display:none;}
@@ -1054,4 +1054,8 @@ p a {
 }
 .sitemap-col.double-col .footer-logo h6.sitemap-header {
     color: #fff;
+}
+
+.hs-form-html .hsfc-Button {
+    transform: none !important;
 }
