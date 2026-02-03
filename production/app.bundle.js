@@ -4414,7 +4414,7 @@ var AppModule = (() => {
       });
       if (this.variant === "base") {
         gsapWithCSS.to(this.wrap, {
-          height: "30rem",
+          height: "22rem",
           duration: 0.5,
           ease: "power2.inOut"
         });
@@ -5341,3 +5341,14 @@ gsap/CustomEase.js:
    * @author: Jack Doyle, jack@greensock.com
   *)
 */
+
+jQuery(document).ready(function($) {
+
+  $('.burger').on('click', function() {
+    $('.navigation').toggleClass('nav-open');
+    $('.lines').toggle();
+    $('.close').toggle();
+    $('body, html').toggleClass("nav-active");
+  });
+
+});

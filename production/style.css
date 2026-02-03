@@ -1220,7 +1220,7 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: yellowgreen;
+  background-color: rgb(21, 0, 255);
 }
 
 .hsfc-NavigationRow__Alerts {
@@ -1250,16 +1250,45 @@ p a:hover:before {
 .hero-newsletter-button,
 .hs-form-html .hsfc-Button,
 .story-form .button.is-dark {
-  background-image: linear-gradient(90deg, #2C2B32, #000000, #3D9DFF, #96D9F5) !important;
-  background-size: 300% 100%;
-  background-position: 0% 50%;
-  transition: background-position 0.5s ease;
+  transition: all 0.4s ease;
+  background: linear-gradient(90deg, #303030 0%, #000000 100%) !important;
+  cursor: pointer !important;
 }
 
 .story-form .button.is-dark:hover,
 .hero-newsletter-button:hover,
 .hs-form-html .hsfc-Button:hover {
-  background-position: 100% 50%;
+  background: linear-gradient(90deg, #3D9DFF, #96D9F5) !important;
+}
+
+.hero-newsletter-button:before, .hs-form-html .hsfc-Button:before, .story-form .button.is-dark:before {
+  content: none;
+}
+
+@media screen and (max-width: 992px) {
+  html.nav-active,
+  body.nav-active {
+    overflow: hidden !important;
+  }
+  .navigation {
+    display: block;
+    width: 100%;
+    opacity: 0;
+    left: -100%;
+    right: auto;
+    top: 50px;
+    transition: all 0.5s ease-in-out;
+    padding-top: 50px;
+    height: calc(100vh - 30px);
+  }
+  .navigation.nav-open {
+    display: block;
+    opacity: 1;
+    left: 0;
+  }
+  .burger, .header-wrapper > a {
+    z-index: 99;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
