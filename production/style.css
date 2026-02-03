@@ -1220,20 +1220,11 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: rgb(117, 255, 133);
+  background-color: yellowgreen;
 }
 
 .hsfc-NavigationRow__Alerts {
   display: none;
-}
-
-.story-form .button.is-dark:hover {
-  background-image: linear-gradient(90deg, #96D9F5 0%, #3D9DFF 100%) !important;
-}
-
-.story-form .button.is-dark:hover,
-.hero-newsletter-button:hover {
-  background-image: linear-gradient(90deg, #96D9F5 0%, #3D9DFF 100%) !important;
 }
 
 .footer .text-block-2, .footer .sitemap-header {
@@ -1246,6 +1237,29 @@ p a:hover:before {
 
 .sitemap-col.double-col .footer-logo h6.sitemap-header {
   color: #fff;
+}
+
+.hs-form-html .hsfc-Button {
+  transform: none !important;
+}
+
+.hero-newsletter-input {
+  border-right: none !important;
+}
+
+.hero-newsletter-button,
+.hs-form-html .hsfc-Button,
+.story-form .button.is-dark {
+  background-image: linear-gradient(90deg, #2C2B32, #000000, #3D9DFF, #96D9F5) !important;
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+  transition: background-position 0.5s ease;
+}
+
+.story-form .button.is-dark:hover,
+.hero-newsletter-button:hover,
+.hs-form-html .hsfc-Button:hover {
+  background-position: 100% 50%;
 }
 
 /*# sourceMappingURL=style.css.map */
