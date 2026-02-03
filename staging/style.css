@@ -1283,6 +1283,9 @@ p a:hover:before {
     opacity: 1;
     left: 0;
   }
+  .burger, .header-wrapper > a {
+    z-index: 99;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

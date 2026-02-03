@@ -1092,4 +1092,7 @@ p a {
             left:0;
         }
     }
+    .burger, .header-wrapper > a{
+        z-index: 99;
+    }
 }
