@@ -4414,7 +4414,7 @@ var AppModule = (() => {
       });
       if (this.variant === "base") {
         gsapWithCSS.to(this.wrap, {
-          height: "30rem",
+          height: "25rem",
           duration: 0.5,
           ease: "power2.inOut"
         });

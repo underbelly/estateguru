@@ -1069,7 +1069,9 @@ p a {
 .hs-form-html .hsfc-Button:hover {
     background: linear-gradient(90deg, #3D9DFF, #96D9F5) !important;
 }
-
+.hero-newsletter-button:before, .hs-form-html .hsfc-Button:before, .story-form .button.is-dark:before{
+    content:none;
+}
 @media screen and (max-width: 992px) {
     html.nav-active,
     body.nav-active{
