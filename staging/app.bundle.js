@@ -5348,6 +5348,7 @@ jQuery(document).ready(function($) {
     $('.navigation').toggleClass('nav-open');
     $('.lines').toggle();
     $('.close').toggle();
+    $('body, html').toggleClass("nav-active");
   });
 
 });

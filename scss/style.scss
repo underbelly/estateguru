@@ -1036,7 +1036,7 @@ p a {
 
 // Staging Tests
 .staging-test {
-    background-color: red;
+    background-color: rgb(21, 0, 255);
 }
 // Footer-newsletter-error-changes
 .hsfc-NavigationRow__Alerts{display:none;}
@@ -1072,15 +1072,20 @@ p a {
 }
 
 @media screen and (max-width: 992px) {
+    html.nav-active,
+    body.nav-active{
+        overflow: hidden !important;
+    }
     .navigation{
         display: block;
         width: 100%;
         opacity: 0;
         left: -100%;
         right:auto;
-        top: 78px;
+        top: 50px;
         transition: all 0.5s ease-in-out;
-        
+        padding-top: 50px;
+        height: calc(100vh - 30px);
         &.nav-open{
             display: block;
             opacity: 1;
