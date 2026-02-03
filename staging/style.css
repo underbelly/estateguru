@@ -1252,7 +1252,7 @@ p a:hover:before {
 .story-form .button.is-dark {
   transition: all 0.4s ease;
   background: linear-gradient(90deg, #3F4348 0%, #000000 100%) !important;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .story-form .button.is-dark:hover,
