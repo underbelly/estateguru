@@ -1220,7 +1220,7 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: yellowgreen;
+  background-color: red;
 }
 
 .hsfc-NavigationRow__Alerts {
@@ -1260,6 +1260,23 @@ p a:hover:before {
 .hero-newsletter-button:hover,
 .hs-form-html .hsfc-Button:hover {
   background-position: 100% 50%;
+}
+
+@media screen and (max-width: 992px) {
+  .navigation {
+    display: block;
+    width: 100%;
+    opacity: 0;
+    left: -100%;
+    right: auto;
+    top: 78px;
+    transition: all 0.5s ease-in-out;
+  }
+  .navigation.nav-open {
+    display: block;
+    opacity: 1;
+    left: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
