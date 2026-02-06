@@ -1220,7 +1220,7 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: rgb(21, 0, 255);
+  background-color: red;
 }
 
 .hsfc-NavigationRow__Alerts {
