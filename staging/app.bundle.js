@@ -5341,3 +5341,12 @@ gsap/CustomEase.js:
    * @author: Jack Doyle, jack@greensock.com
   *)
 */
+
+jQuery(document).ready(function($) {
+  $('.burger').on('click', function() {
+    $('.navigation').toggleClass('nav-open');
+    $('.lines').toggle();
+    $('.close').toggle();
+    $('body, html').toggleClass("nav-active");
+  });
+});
