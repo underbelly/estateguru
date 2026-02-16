@@ -5376,9 +5376,13 @@ jQuery(document).ready(function($) {
     if ($(this).is(":checked")) {
       $currentBox.find(".price-month").hide();
       $currentBox.find(".price-year").show();
+       $currentBox.find(".text-annual").hide();
+      $currentBox.find(".text-monthly").show();
     } else {
       $currentBox.find(".price-year").hide();
       $currentBox.find(".price-month").show();
+      $currentBox.find(".text-annual").show();
+      $currentBox.find(".text-monthly").hide();
     }
   });
    $(".compare-feature input").on("change", function () {
