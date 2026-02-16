@@ -5381,4 +5381,11 @@ jQuery(document).ready(function($) {
       $currentBox.find(".price-month").show();
     }
   });
+   $(".compare-feature input").on("change", function () {
+    if ($(this).is(":checked")) {
+      $('html, body').animate({
+        scrollTop: $("#ourbenefits").offset().top
+      }, 800);
+    }
+  });
 });
