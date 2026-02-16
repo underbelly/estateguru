@@ -1220,7 +1220,7 @@ p a:hover:before {
 }
 
 .staging-test {
-  background-color: red;
+  background-color: blue;
 }
 
 .hsfc-NavigationRow__Alerts {
@@ -1292,3 +1292,12 @@ p a:hover:before {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* accordion */
+.benefits-heading .arrow{
+  transition:0.5s all ease;
+}
+.benefits-heading.active .arrow {
+  transform: rotate(180deg);
+}

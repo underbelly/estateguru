@@ -5349,4 +5349,36 @@ jQuery(document).ready(function($) {
     $('.close').toggle();
     $('body, html').toggleClass("nav-active");
   });
+
+  $(".benefits-accordion .benefits-heading.active").siblings(".benefits-content").show();
+  $(".benefits-accordion .benefits-heading").on("click", function () {
+    if ($(this).hasClass("active")) {
+      $(this).removeClass("active");
+      $(this).siblings(".benefits-content").slideUp(500);
+    } else {
+      $(".benefits-accordion .benefits-heading").removeClass("active");
+      $(".benefits-content").slideUp(500);
+
+      $(this).addClass("active");
+      $(this).siblings(".benefits-content").slideDown(500);
+    }
+  });
+
+  $(".price-box").each(function () {
+    var $box = $(this);
+    $box.find(".price-year").hide();
+    $box.find(".price-month").show();
+  });
+
+  $(".price-box .price-switch input").on("change", function () {
+    var $currentBox = $(this).closest(".price-box");
+
+    if ($(this).is(":checked")) {
+      $currentBox.find(".price-month").hide();
+      $currentBox.find(".price-year").show();
+    } else {
+      $currentBox.find(".price-year").hide();
+      $currentBox.find(".price-month").show();
+    }
+  });
 });
